@@ -71,3 +71,13 @@ This repository is written with the support of the high-performance auto differe
 
 ## Pretrained weights
 - Refer to the Tsinghua Cloud link given above
+
+
+## Examples
+Our method exhibits desireable robustness. Lumbars can be recognized even in photos taken by smartphones.
+
+![](images/demo2_tweak.jpg)
+
+A very difficult examples of "La photo de la photo" (second-order corruption). Our method still outperforms competitors.
+
+![](images/hell2_tweak.jpg)
