@@ -7,8 +7,8 @@ This is the final project for Tsinghua University Course Pattern Recognition 202
 This repository is written with the support of the high-performance auto differentiation library [Jittor](https://github.com/Jittor/jittor)
 
 ## Prequisities
-- data directory `data` (can be downloaded from Tsinghua cloud disk [coming soon])
-- environment
+- Data directory `data` (can be downloaded from Tsinghua cloud disk [coming soon])
+- Environment
   - Linux
   - Anaconda
   - jittor (latest version)
@@ -17,17 +17,7 @@ This repository is written with the support of the high-performance auto differe
 ## Usage
 - Main Script
 ```bash
-> python3.7 run.py [--model]
-      [--mode {
-        train,test,train-test, predict, 
-        test_zs_big, test_zs_small,test_hard
-      } ]
-      [--gpu {0,1}] 
-      [-o {Adam, SGD}] [-e EPOCHS] [-b BATCH_SIZE] 
-      [-l LR] [-p PORT] [-c CLASS_NUM] 
-      [--loss LOSS] {
-        Choose from 'ce', 'iou', 'dice', 'focal', or combine
-        with '_' and ratio, like 'ce_0.8_dice_0.2'}
+> python3.7 run.py [--model MODEL] [--mode MODE] [--gpu GPU] [-o {Adam, SGD}] [-e EPOCHS] [-b BATCH_SIZE] [-l LR] [--loss LOSS]
 ```
 
 - If using hrnet, set the batch size to be 2
@@ -52,22 +42,32 @@ This repository is written with the support of the high-performance auto differe
   - `test_zs_big`, `test_zs_small`: test on Zhongshan dataset
   - `test_hard`: test and contour difficult samples selected from Xiehe dataset
 
+- GPU
+  - designate the GPU number, e.g. 0
+
 - Loss
   - Choose from `{'ce', 'iou', 'dice', 'focal'}`
   - or combine with '_' and ratio, e.g. `'ce_0.8_dice_0.2'`
+
 - Designate the GPU to be used, e.g. use #2 GPU：
   
   ```bash
-  CUDA_VISIBLE_DEVICES="2" python3.7 run.py --model hrnet --mode train-test -b 2 -e 8
+  > CUDA_VISIBLE_DEVICES="2" python3.7 run.py --model hrnet --mode train-test -b 2 -e 8
   ```
 
 ## Pretrain
 ```bash
-log_silent=1 python run_ssl.py
+> log_silent=1 python run_ssl.py
 ```
 
 ## Demos
 - Demo API: refer to [Tsinghua Cloud](https://cloud.tsinghua.edu.cn/f/d6bbfa925b87400eb707/)
+- Demo usage
+
+  ```bash
+  > export FLASK_APP='app.py'
+  > python -m flask run -p [PORT]
+  ```
 
 ## Pretrained weights
 - Refer to the Tsinghua Cloud link given above
